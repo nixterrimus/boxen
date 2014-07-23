@@ -6,9 +6,42 @@ class people::nixterrimus {
     path   => "${HOME}/.homesick/repos/homeshick"
   }
 
-  include zsh
+  package {
+    [
+      'go',
+      'jq',
+    ]:
+    ensure => present
+  }
 
   # Janus Setup
   include macvim
   include vim-janus
+
+  # OS X Setup
+  include osx::global::key_repeat_rate
+  include osx::global::key_repeat_delay
+  include osx::dock::autohide
+  include osx::finder::unhide_library
+  include osx::finder::enable_quicklook_text_selection
+  include osx::global::expand_print_dialog
+  include osx::global::expand_save_dialog
+  include osx::disable_app_quarantine
+
+  class { 'osx::global::natural_mouse_scrolling':
+    enabled => false
+  }
+  class { 'osx::dock::icon_size':
+    size => 30
+  }
+
+  # Git Config
+  git::config::global {
+    'user.name':
+      value => 'Nick Rowe';
+    'user.email':
+      value => 'nixterrimus@dcxn.com';
+    'github.user':
+      value => 'nixterrimus';
+  }
 }
