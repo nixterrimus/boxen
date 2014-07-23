@@ -6,6 +6,8 @@ class people::nixterrimus {
     path   => "${HOME}/.homesick/repos/homeshick"
   }
 
+  include zsh
+
   # Janus Setup
   include macvim
   include vim-janus

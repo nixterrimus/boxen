@@ -57,6 +57,8 @@ github "stdlib",      "4.2.1", :repo => "puppetlabs/puppetlabs-stdlib"
 github "sudo",        "1.0.0"
 github "xquartz",     "1.1.1"
 github "macvim",      "1.0.0"
+github "zsh",         "1.0.0"
+
 
 
 # Optional/custom modules. There are tons available at
