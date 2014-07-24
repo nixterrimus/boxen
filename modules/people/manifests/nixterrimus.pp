@@ -5,6 +5,22 @@ class people::nixterrimus {
     source => 'andsens/homeshick',
     path   => "${HOME}/.homesick/repos/homeshick"
   }
+  -> file { "${HOME}/.homeshick":
+    ensure => 'link',
+    target => "${HOME}/.homesick/repos/homeshick/home/.homeshick"
+  }
+  -> repository { 'nixterrimus-dotfiles':
+    source => 'https://github.com/nixterrimus/dotfiles.git',
+    path   => "${HOME}/.homesick/repos/dotfiles"
+  }
+  ~> exec { "${HOME}/.homeshick link dotfiles --force":
+    refreshonly => true
+  }
+
+  repository {'robbyrussell_oh-my-zsh':
+    source => 'robbyrussell/oh-my-zsh',
+    path   => "${HOME}/.oh-my-zsh"
+  }
 
   package {
     [
