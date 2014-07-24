@@ -63,3 +63,10 @@ github "macvim",      "1.0.0"
 github "osx",         "2.7.0"
 github "hipchat",     "1.1.3"
 github "brewcask",    "0.0.4", :repo => "phinze/puppet-brewcask"
+github "iterm2",      "1.1.2"
+github "inconsolata", "0.0.1", :repo => "foca/puppet-inconsolata"
+
+## Projects
+github "redis",       "3.0.3"
+github "sysctl",      "1.0.1"
+github "postgresql",  "3.0.0"

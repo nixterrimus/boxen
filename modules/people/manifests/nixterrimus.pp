@@ -26,8 +26,11 @@ class people::nixterrimus {
     [
       'go',
       'jq',
+      'ag',
+      'tmux',
 
-      'wget'
+      'wget',
+      'youtube-dl'
     ]:
     ensure => present
   }
@@ -45,6 +48,7 @@ class people::nixterrimus {
   include osx::global::expand_print_dialog
   include osx::global::expand_save_dialog
   include osx::disable_app_quarantine
+  include inconsolata
 
   class { 'osx::global::natural_mouse_scrolling':
     enabled => false
@@ -54,6 +58,13 @@ class people::nixterrimus {
   }
 
   # OS X Apps
+  include iterm2::stable
+  include iterm2::colors::arthur
+
+  file { '/Library/Preferences/com.googlecode.iterm2.plist':
+    content => template('people/nixterrimus/com.googlecode.iterm2.plist'),
+  }
+
   include brewcask
 
   package { 'google-chrome': provider => 'brewcask' }
@@ -74,4 +85,7 @@ class people::nixterrimus {
     'github.user':
       value => 'nixterrimus';
   }
+
+  # Stuff I do
+  include projects::style-gallery
 }
