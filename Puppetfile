@@ -61,3 +61,5 @@ github "xquartz",     "1.1.1"
 # https://github.com/boxen.
 github "macvim",      "1.0.0"
 github "osx",         "2.7.0"
+github "hipchat",     "1.1.3"
+github "brewcask",    "0.0.4", :repo => "phinze/puppet-brewcask"

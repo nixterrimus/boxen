@@ -10,6 +10,8 @@ class people::nixterrimus {
     [
       'go',
       'jq',
+
+      'wget'
     ]:
     ensure => present
   }
@@ -34,6 +36,18 @@ class people::nixterrimus {
   class { 'osx::dock::icon_size':
     size => 30
   }
+
+  # OS X Apps
+  include brewcask
+
+  package { 'google-chrome': provider => 'brewcask' }
+  package { 'adium': provider => 'brewcask' }
+  package { 'alfred': provider => 'brewcask' }
+
+  # Someday this might not be the right choice
+  #  then look into: https://github.com/sdegutis/hydra
+  package { 'slate': provider => 'brewcask' }
+  include hipchat
 
   # Git Config
   git::config::global {
